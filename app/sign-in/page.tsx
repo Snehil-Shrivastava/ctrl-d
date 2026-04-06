@@ -135,12 +135,12 @@ export default function SignInPage() {
           </SocialBtn>
         </div>
 
-        {/* <p className={styles.switchText}>
+        <p className={styles.switchText}>
           Don&apos;t have an account?{" "}
-          <Link href="/sign-up" className={styles.switchLink}>
+          <Link href="/sign-up" className={`${styles.switchLink} ml-1`}>
             Sign up
           </Link>
-        </p> */}
+        </p>
       </div>
     </main>
   );
