@@ -46,7 +46,7 @@ export default function SignInPage() {
     >
       <div className={styles.bgImage} />
 
-      <div className={styles.card}>
+      <div className="card w-full max-w-120 m-8">
         <Image src={logo} alt="" className="w-15 mx-auto mb-3" />
 
         <h1 className={`text-center text-2xl mb-1`}>Sign in with email</h1>

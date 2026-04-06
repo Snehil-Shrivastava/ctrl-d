@@ -67,7 +67,7 @@ export default function SignUpPage() {
         style={{ objectFit: "cover", zIndex: 0 }}
       />
 
-      <div className={styles.card}>
+      <div className="card w-full max-w-120 m-8">
         <Image src={logo} alt="" className="w-15 mx-auto mb-3" />
         <h1 className={`text-center text-2xl mb-1`}>Create an account</h1>
         <p className={`font-outfit text-center mb-8 font-extralight`}>
