@@ -6,13 +6,14 @@ import TopBar from "@/components/TopBar";
 import { Project } from "@/types";
 import { useState } from "react";
 import NewProjectModal from "@/components/NewProjectModal";
+import ProjectsContainer from "@/components/ProjectsContainer";
 
 const INITIAL_PROJECTS: Project[] = [
-  {
-    id: "a1",
-    title: "xVS Review",
-    updatedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-  },
+  // {
+  //   id: "a1",
+  //   title: "xVS Review",
+  //   updatedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+  // },
 ];
 
 export default function Home() {
@@ -36,8 +37,9 @@ export default function Home() {
         <Image src={bgImg} alt="" fill />
       </div>
       <div className="flex items-center h-full">
-        <div className="card w-4/5 max-w-360 mx-auto">
+        <div className="card w-4/5 max-w-360 mx-auto flex flex-col gap-15">
           <TopBar onNewProject={() => setShowModal(true)} />
+          <ProjectsContainer projects={projects} />
         </div>
       </div>
 
