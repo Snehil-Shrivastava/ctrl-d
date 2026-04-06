@@ -14,7 +14,8 @@
   width: 100%;
   max-width: 480px;
   margin: 2rem;
-  background: rgba(19, 15, 13, 0.7);
+  /* background: rgba(19, 15, 13, 0.7); */
+  background: linear-gradient(to top, rgba(35, 27, 23, 0.7), rgb(10, 10, 10));
   border-radius: 24px;
   padding: 2.5rem 2rem;
   backdrop-filter: blur(14px);
