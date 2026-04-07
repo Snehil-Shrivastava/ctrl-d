@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import styles from "../sign-in/auth.module.css";
 
 import logo from "@/public/ctrld-logo.svg";
 
-export default function SignUpPage() {
+function SignUpContent() {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -193,6 +193,14 @@ export default function SignUpPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense>
+      <SignUpContent />
+    </Suspense>
   );
 }
 
