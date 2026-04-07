@@ -3,6 +3,8 @@
 import Image from "next/image";
 import bgImg from "@/public/sand_bg.png";
 import TopBar from "@/components/TopBar";
+import ProjectsContainer from "@/components/ProjectsContainer";
+import BottomNav from "@/components/BottomNav";
 
 export default function Home() {
   return (
@@ -11,8 +13,10 @@ export default function Home() {
         <Image src={bgImg} alt="" fill />
       </div>
       <div className="flex items-center h-full">
-        <div className="w-4/5 max-w-360 mx-auto flex flex-col gap-15 backdrop-blur-xl py-10 rounded-xl container-gradient px-15">
+        <div className="w-4/5 max-w-360 mx-auto flex flex-col gap-15 backdrop-blur-xl py-10 rounded-xl main-container-gradient px-15">
           <TopBar />
+          <ProjectsContainer />
+          <BottomNav />
         </div>
       </div>
     </div>
