@@ -6,14 +6,9 @@ import { X, FolderPlus } from "lucide-react";
 interface NewProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreateProject: (name: string) => void;
 }
 
-const NewProjectModal = ({
-  isOpen,
-  onClose,
-  onCreateProject,
-}: NewProjectModalProps) => {
+const NewProjectModal = ({ isOpen, onClose }: NewProjectModalProps) => {
   const [projectName, setProjectName] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -37,12 +32,12 @@ const NewProjectModal = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, handleClose]);
 
-  const handleSubmit = () => {
-    const trimmed = projectName.trim();
-    if (!trimmed) return;
-    onCreateProject(trimmed);
-    handleClose();
-  };
+  // const handleSubmit = () => {
+  //   const trimmed = projectName.trim();
+  //   if (!trimmed) return;
+  //   onCreateProject(trimmed);
+  //   handleClose();
+  // };
 
   if (!isOpen) return null;
 
@@ -109,7 +104,6 @@ const NewProjectModal = ({
             placeholder="e.g. My Awesome App"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
             className="rounded-lg px-4 py-3 outline-none text-[#F3EDDE] placeholder-neutral-500 text-base font-outfit"
             style={{
               background: "rgba(243,237,222,0.07)",
@@ -134,7 +128,7 @@ const NewProjectModal = ({
           >
             Cancel
           </button>
-          <button
+          {/* <button
             onClick={handleSubmit}
             disabled={!projectName.trim()}
             className="px-6 py-2.5 rounded-lg text-sm font-outfit font-semibold transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
@@ -144,6 +138,13 @@ const NewProjectModal = ({
                 : "rgba(243,237,222,0.15)",
               color: projectName.trim() ? "#1a1710" : "#F3EDDE",
             }}
+          >
+            Create Project
+          </button> */}
+          <button
+            onClick={onClose}
+            className="px-5 py-2.5 rounded-lg text-sm font-outfit text-neutral-300 hover:text-[#F3EDDE] transition-colors cursor-pointer"
+            style={{ background: "rgba(243,237,222,0.06)" }}
           >
             Create Project
           </button>

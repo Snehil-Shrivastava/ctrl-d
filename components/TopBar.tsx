@@ -1,10 +1,11 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { Search } from "lucide-react";
 import addProject from "@/public/new-project.svg";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 interface TopBarProps {
   onNewProject: () => void;
@@ -15,6 +16,9 @@ interface TopBarProps {
 const TopBar = ({ onNewProject, search, onSearchChange }: TopBarProps) => {
   const { data: session } = useSession();
   const name = session?.user?.name as string;
+
+  const pathname = usePathname();
+  const isIndividualProject = pathname.startsWith("/project/");
 
   return (
     <div className="flex items-center">
@@ -40,15 +44,19 @@ const TopBar = ({ onNewProject, search, onSearchChange }: TopBarProps) => {
         </div>
       </div>
       <div className="flex-[0.35] flex items-center justify-center">
-        <button
-          onClick={onNewProject}
-          className="flex gap-4 items-center justify-center cursor-pointer"
-        >
-          <Image src={addProject} alt="" />
-          <span className="font-outfit font-semibold text-[26px]">
-            New Project
-          </span>
-        </button>
+        {!isIndividualProject ? (
+          <button
+            onClick={onNewProject}
+            className="flex gap-4 items-center justify-center cursor-pointer"
+          >
+            <Image src={addProject} alt="" />
+            <span className="font-outfit font-semibold text-[26px]">
+              New Project
+            </span>
+          </button>
+        ) : (
+          <span className="text-2xl">xVS Creations</span>
+        )}
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const BottomNav = () => {
   const isHome = pathname === "/";
 
   return (
-    <div className="projects-container-gradient py-3 backdrop-blur-md px-10 rounded-xl flex justify-between items-center font-cal-sans">
+    <div className="projects-container-gradient py-3 backdrop-blur-md px-10 rounded-xl flex justify-between items-center font-cal-sans shadow-2xl">
       <button
         onClick={() => {
           if (!isHome) router.push("/");
