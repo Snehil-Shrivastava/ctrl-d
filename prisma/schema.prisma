@@ -58,6 +58,24 @@ model Project {
   createdAt DateTime @default(now())
   authorId  String
   author    User     @relation(fields: [authorId], references: [id])
+
+  media Media[]
+
+  @@map("projects")
+}
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  name      String
+  url       String // The link to the file (S3, Uploadthing, etc.)
+  type      String // e.g., "image/png" or "video/mp4"
+  size      String // e.g., "4GB"
+  format    String // e.g., "MKV"
+  createdAt DateTime @default(now())
+  projectId Int
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("media")
 }
 
 model VerificationToken {

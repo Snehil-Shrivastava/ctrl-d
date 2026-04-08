@@ -32,15 +32,6 @@ export default function Home() {
     fetchProjects();
   }, []);
 
-  // const handleCreateProject = (name: string) => {
-  //   const newProject: Project = {
-  //     id: crypto.randomUUID(),
-  //     name,
-  //     createdAt: new Date(),
-  //   };
-  //   setProjects((prev) => [...prev, newProject]);
-  // };
-
   const handleCreateProject = async (name: string) => {
     try {
       const res = await fetch("/api/projects", {

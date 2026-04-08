@@ -139,6 +139,7 @@
 // ------------------------------- TEST ---------------------------------
 
 import { ArrowUpDown, ChevronDown, Folder } from "lucide-react";
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 export interface Project {
@@ -382,7 +383,7 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
       </div>
 
       {/* Projects Area */}
-      <div className="min-h-72 px-10 py-6">
+      <div className="min-h-112.5 px-10 py-6">
         {sorted.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-60 gap-3 text-neutral-500">
             <Folder size={40} strokeWidth={1.2} />
@@ -395,7 +396,8 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
         ) : view === "grid" ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {sorted.map((project) => (
-              <div
+              <Link
+                href={`/project/${project.id}`}
                 key={project.id}
                 className="flex flex-col gap-2 rounded-xl p-4 cursor-pointer transition-all group"
                 style={{
@@ -403,16 +405,12 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
                   border: "1px solid rgba(243,237,222,0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "rgba(243,237,222,0.09)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor =
-                    "rgba(243,237,222,0.18)";
+                  e.currentTarget.style.background = "rgba(243,237,222,0.09)";
+                  e.currentTarget.style.borderColor = "rgba(243,237,222,0.18)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "rgba(243,237,222,0.05)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor =
-                    "rgba(243,237,222,0.08)";
+                  e.currentTarget.style.background = "rgba(243,237,222,0.05)";
+                  e.currentTarget.style.borderColor = "rgba(243,237,222,0.08)";
                 }}
               >
                 <div
@@ -441,23 +439,22 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
                   })} */}
                   {formatDate(project.createdAt)}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
           <div className="flex flex-col gap-1">
             {sorted.map((project) => (
-              <div
+              <Link
                 key={project.id}
+                href={`/project/${project.id}`}
                 className="flex items-center gap-4 px-4 py-3 rounded-lg cursor-pointer transition-all"
                 style={{ background: "transparent" }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "rgba(243,237,222,0.06)";
+                  e.currentTarget.style.background = "rgba(243,237,222,0.06)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "transparent";
+                  e.currentTarget.style.background = "transparent";
                 }}
               >
                 <Folder
@@ -481,7 +478,7 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
                   })} */}
                   {formatDate(project.createdAt)}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         )}
