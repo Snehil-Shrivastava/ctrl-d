@@ -17,41 +17,17 @@ const NewProjectModal = ({
   const [projectName, setProjectName] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  //   useEffect(() => {
-  //     if (isOpen) {
-  //       setProjectName("");
-  //       setTimeout(() => inputRef.current?.focus(), 50);
-  //     }
-  //   }, [isOpen]);
-
   const handleClose = useCallback(() => {
     setProjectName("");
     onClose();
   }, [onClose]);
 
-  // 2. Only handle focusing the input here
   useEffect(() => {
     if (isOpen) {
       const timeoutId = setTimeout(() => inputRef.current?.focus(), 50);
-      return () => clearTimeout(timeoutId); // Clean up the timeout
+      return () => clearTimeout(timeoutId);
     }
   }, [isOpen]);
-
-  // Close on Escape key
-  //   useEffect(() => {
-  //     const handleKeyDown = (e: KeyboardEvent) => {
-  //       if (e.key === "Escape") onClose();
-  //     };
-  //     if (isOpen) window.addEventListener("keydown", handleKeyDown);
-  //     return () => window.removeEventListener("keydown", handleKeyDown);
-  //   }, [isOpen, onClose]);
-
-  //   const handleSubmit = () => {
-  //     const trimmed = projectName.trim();
-  //     if (!trimmed) return;
-  //     onCreateProject(trimmed);
-  //     onClose();
-  //   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

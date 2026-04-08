@@ -142,9 +142,9 @@ import { ArrowUpDown, ChevronDown, Folder } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export interface Project {
-  id: string;
+  id: number;
   name: string;
-  createdAt: Date;
+  createdAt: string | Date;
 }
 
 type SortKey = "name" | "date";
@@ -159,6 +159,16 @@ const SORT_OPTIONS: { label: string; value: SortKey }[] = [
   { label: "Name", value: "name" },
   { label: "Date Created", value: "date" },
 ];
+
+const formatDate = (dateInput: string | Date) => {
+  const date = new Date(dateInput);
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+};
 
 const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
   const [view, setView] = useState<ViewMode>("grid");
@@ -183,7 +193,11 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
 
   const sorted = [...filtered].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
-    return b.createdAt.getTime() - a.createdAt.getTime();
+    // return b.createdAt.getTime() - a.createdAt.getTime();
+    // return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    const dateA = new Date(a.createdAt).getTime();
+    const dateB = new Date(b.createdAt).getTime();
+    return dateB - dateA; // Newest first
   });
 
   const currentSortLabel =
@@ -415,11 +429,17 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
                   {project.name}
                 </span>
                 <span className="text-xs text-neutral-500 font-outfit">
-                  {project.createdAt.toLocaleDateString("en-US", {
+                  {/* {project.createdAt.toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
-                  })}
+                  })} */}
+                  {/* {project.createdAt.toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })} */}
+                  {formatDate(project.createdAt)}
                 </span>
               </div>
             ))}
@@ -449,11 +469,17 @@ const ProjectsContainer = ({ projects, search }: ProjectsContainerProps) => {
                   {project.name}
                 </span>
                 <span className="text-xs text-neutral-500 font-outfit">
-                  {project.createdAt.toLocaleDateString("en-US", {
+                  {/* {project.createdAt.toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
-                  })}
+                  })} */}
+                  {/* {project.createdAt.toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })} */}
+                  {formatDate(project.createdAt)}
                 </span>
               </div>
             ))}
