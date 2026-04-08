@@ -11,7 +11,9 @@ CREATE TABLE "User" (
 CREATE TABLE "Projects" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "ownerId" INTEGER NOT NULL,
+    "content" TEXT,
+    "published" BOOLEAN NOT NULL DEFAULT false,
+    "authorId" INTEGER NOT NULL,
 
     CONSTRAINT "Projects_pkey" PRIMARY KEY ("id")
 );
@@ -20,4 +22,4 @@ CREATE TABLE "Projects" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "Projects" ADD CONSTRAINT "Projects_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Projects" ADD CONSTRAINT "Projects_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

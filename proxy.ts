@@ -15,6 +15,6 @@ export const config = {
      * - _next/static, _next/image (Next.js internals)
      * - image/font/media files in /public
      */
-    "/((?!sign-in|sign-up|api/auth|_next/static|_next/image|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.svg|.*\\.ico|.*\\.webp|.*\\.woff2?|.*\\.ttf).*)",
+    "/((?!sign-in|sign-up|api/auth|api/register|_next/static|_next/image|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.svg|.*\\.ico|.*\\.webp|.*\\.woff2?|.*\\.ttf).*)",
   ],
 };
