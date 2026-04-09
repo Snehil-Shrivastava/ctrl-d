@@ -45,7 +45,7 @@ const ProjectsContainer = () => {
     SORT_OPTIONS.find((o) => o.value === sortBy)?.label ?? "Name";
 
   return (
-    <div className="backdrop-blur-md py-2.5 projects-container-gradient rounded-xl">
+    <div className="backdrop-blur-md projects-container-gradient rounded-xl">
       {/* Toolbar */}
       <div className="flex justify-between pb-2 border-b border-b-neutral-400/50 px-10">
         {/* View toggle */}

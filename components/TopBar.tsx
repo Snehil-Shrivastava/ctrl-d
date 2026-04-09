@@ -18,7 +18,7 @@ const TopBar = ({ onNewProject, search, onSearchChange }: TopBarProps) => {
   const name = session?.user?.name as string;
 
   const pathname = usePathname();
-  const isIndividualProject = pathname.startsWith("/project/");
+  const isHome = pathname === "/";
 
   return (
     <div className="flex items-center">
@@ -44,7 +44,7 @@ const TopBar = ({ onNewProject, search, onSearchChange }: TopBarProps) => {
         </div>
       </div>
       <div className="flex-[0.35] flex items-center justify-center">
-        {!isIndividualProject ? (
+        {isHome ? (
           <button
             onClick={onNewProject}
             className="flex gap-4 items-center justify-center cursor-pointer"
