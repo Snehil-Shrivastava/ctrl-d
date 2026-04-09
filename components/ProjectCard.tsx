@@ -55,8 +55,9 @@ const ProjectCard = ({
     // Wrap in Link to change the URL
     <div>
       <div className="min-h-112 grid grid-cols-5">
-        <Link href={`/project/1`} className="w-60">
-          <div
+        <div className="w-60">
+          <Link
+            href={`/project/1`}
             className="rounded-2xl w-auto flex flex-col gap-3 justify-center items-center px-2 py-2 cursor-pointer hover:opacity-80 transition-opacity"
             style={{
               background: "rgba(243,237,222,0.05)",
@@ -75,8 +76,8 @@ const ProjectCard = ({
                 <Image src={share} alt="" />
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -15,8 +15,9 @@ const IndividualProjectCard = ({
     // Wrap in Link to change the URL
     <div>
       <div className="min-h-112 grid grid-cols-5 gap-x-25">
-        <Link href={`/checks`} className="w-60">
-          <div
+        <div className="w-60">
+          <Link
+            href={`/checks`}
             className="rounded-2xl w-auto flex flex-col gap-3 justify-center items-center px-2 py-2 cursor-pointer hover:opacity-80 transition-opacity h-[269.33px]"
             style={{
               background: "rgba(243,237,222,0.05)",
@@ -40,19 +41,22 @@ const IndividualProjectCard = ({
                 <Image src={share} alt="" />
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
 
-        <Link href={"/upload"} className="w-60">
-          <div className="flex flex-col items-center justify-center bg-taupe-600/50 backdrop-blur-md border border-white/5 gap-8 px-4 w-full rounded-xl h-[269.33px]">
+        <div className="w-60">
+          <Link
+            href={"/upload"}
+            className="flex flex-col items-center justify-center bg-taupe-600/50 backdrop-blur-md border border-white/5 gap-8 px-4 w-full rounded-xl h-[269.33px]"
+          >
             <div>
               <Image src={add} alt="" className="opacity-50" />
             </div>
             <span className="text-2xl font-semibold text-neutral-400">
               Add Media
             </span>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );
