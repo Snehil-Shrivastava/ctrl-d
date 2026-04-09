@@ -5,17 +5,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { ArrowUpDown, ChevronDown } from "lucide-react";
-import CheckComment from "@/components/CheckComment";
 
+import reviewImg from "@/public/review-img.png";
 import spellingCheck from "@/public/grammar-check.png";
 import alignmentCheck from "@/public/alignment-check.png";
 import logoCheck from "@/public/logo-check.png";
+import CheckComment from "@/components/CheckComment";
 
 const Page = () => {
   const [isReady, setIsReady] = useState(false);
+  const [isCheckedGrammar, setIsCheckedGrammar] = useState(false);
+  const [isCheckedAlignment, setIsCheckedAlignment] = useState(false);
+  const [isCheckedLogo, setIsCheckedLogo] = useState(false);
 
-  const [comment, setComment] = useState<"grammar" | "alignment" | "logo">(
-    "grammar",
+  const [comment, setComment] = useState<"grammar" | "alignment" | "logo" | "">(
+    "",
   );
 
   useEffect(() => {
@@ -40,7 +44,9 @@ const Page = () => {
               ? spellingCheck
               : comment === "alignment"
                 ? alignmentCheck
-                : logoCheck
+                : comment === "logo"
+                  ? logoCheck
+                  : reviewImg
           }
           alt=""
           fill
@@ -58,51 +64,32 @@ const Page = () => {
           </div>
         </div>
         <div className="flex flex-col gap-8 pt-10">
-          <div
-            className="group flex items-center gap-6 px-8 py-6 border border-[#F69435]/50 rounded-2xl max-w-2xl cursor-pointer select-none transition-all hover:border-[#F69435]/30"
-            onClick={() => setComment("grammar")}
-          >
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-[#F69435] uppercase">
-                grammar
-              </span>
-              <h3
-                className={`text-base font-medium transition-colors duration-300 text-[#E5E5E5]`}
-              >
-                Spelling &quot;Participants&quot;
-              </h3>
-            </div>
-          </div>
-          <div
-            className="group flex items-center gap-6 px-8 py-6 border border-[#F69435]/50 rounded-2xl max-w-2xl cursor-pointer select-none transition-all hover:border-[#F69435]/30"
-            onClick={() => setComment("alignment")}
-          >
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-[#F69435] uppercase">
-                design
-              </span>
-              <h3
-                className={`text-base font-medium transition-colors duration-300 text-[#E5E5E5]`}
-              >
-                Left hand alignment issue
-              </h3>
-            </div>
-          </div>
-          <div
-            className="group flex items-center gap-6 px-8 py-6 border border-[#F69435]/50 rounded-2xl max-w-2xl cursor-pointer select-none transition-all hover:border-[#F69435]/30"
-            onClick={() => setComment("logo")}
-          >
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-[#F69435] uppercase">
-                design
-              </span>
-              <h3
-                className={`text-base font-medium transition-colors duration-300 text-[#E5E5E5]`}
-              >
-                Logo should be on the right - Brand guidelines
-              </h3>
-            </div>
-          </div>
+          <CheckComment
+            category="grammar"
+            check='Spelling "Participants"'
+            targetComment="grammar"
+            setComment={setComment}
+            isChecked={isCheckedGrammar}
+            setIsChecked={setIsCheckedGrammar}
+          />
+
+          <CheckComment
+            category="design"
+            check="Left hand alignment issue"
+            targetComment="alignment"
+            setComment={setComment}
+            isChecked={isCheckedAlignment}
+            setIsChecked={setIsCheckedAlignment}
+          />
+
+          <CheckComment
+            category="design"
+            check="Logo should be on the right - Brand guidelines"
+            targetComment="logo"
+            setComment={setComment}
+            isChecked={isCheckedLogo}
+            setIsChecked={setIsCheckedLogo}
+          />
         </div>
       </div>
     </div>

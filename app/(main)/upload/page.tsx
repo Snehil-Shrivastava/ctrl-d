@@ -47,7 +47,7 @@ const Page = () => {
         <span>Drag or upload your design</span>
       </div> */}
 
-      <div className="bg-[#F69739]/20 backdrop-blur-md flex flex-col items-center justify-center py-10 gap-5 rounded-2xl border border-dotted border-white min-h-[300px] overflow-hidden">
+      <div className="bg-[#F69739]/20 backdrop-blur-md flex flex-col items-center justify-center py-10 gap-5 rounded-2xl border border-dotted border-white min-h-75 overflow-hidden">
         {preview ? (
           /* Show the Uploaded Image */
           <div className="relative w-full h-full flex flex-col items-center">
