@@ -55,7 +55,7 @@ const TopBar = ({ onNewProject, search, onSearchChange }: TopBarProps) => {
             </span>
           </button>
         ) : (
-          <span className="text-2xl">xVS Creations</span>
+          <span className="text-2xl">xVS Reviews</span>
         )}
       </div>
     </div>
