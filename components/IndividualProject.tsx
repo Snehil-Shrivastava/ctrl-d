@@ -41,13 +41,15 @@ import ProjectCard from "./ProjectCard";
 import Image from "next/image";
 import Link from "next/link";
 import add from "@/public/add.svg";
+import IndividualProjectCard from "./IndividualProjectCard";
 
 const IndividualProject = () => {
   return (
     <div className="relative">
-      <ProjectCard title="xVS Showreel" description="updated 4 days ago" />
+      {/* <ProjectCard title="Showreel" description="updated 4 days ago" /> */}
+      <IndividualProjectCard />
 
-      <Link
+      {/* <Link
         href={"/upload"}
         className="p-4 bg-taupe-600/50 backdrop-blur-md w-65 flex flex-col items-center rounded-xl absolute right-20 top-15 py-10 gap-8 border border-white/5"
       >
@@ -57,7 +59,7 @@ const IndividualProject = () => {
         <span className="text-2xl font-semibold text-neutral-400">
           Add Media
         </span>
-      </Link>
+      </Link> */}
 
       <div className="border-t border-t-neutral-400/50">
         <div className="px-10 py-10 text-xs flex gap-10 justify-between w-150">
