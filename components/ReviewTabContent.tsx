@@ -18,15 +18,18 @@ const imageMap: Record<CommentId, StaticImageData> = {
   "": reviewImg,
 };
 
-const ReviewTabContent = ({ currentTab }: { currentTab: Status }) => {
+const ReviewTabContent = ({ currentTab }: { currentTab: Status | "all" }) => {
   const { isReady, comments, activeImage } = useReviewContext();
 
   if (!isReady) {
     return <LoadingOverlay />;
   }
 
-  // Only show comments that belong to the current tab (review, completed, or ignored)
-  const filteredComments = comments.filter((c) => c.status === currentTab);
+  // If the tab is "all", show everything. Otherwise, filter by the specific status.
+  const filteredComments =
+    currentTab === "all"
+      ? comments
+      : comments.filter((c) => c.status === currentTab);
 
   const displayImage = imageMap[activeImage] || reviewImg;
 
